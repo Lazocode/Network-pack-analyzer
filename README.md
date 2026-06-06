@@ -10,7 +10,7 @@ Developed for educational purposes in the context of blue team and cybersecurity
 ## Features
 - [x] Real-time packet capture
 - [x] Protocol identification (TCP, UDP, ICMP)
-- [ ] Source and destination ports
+- [x] Source and destination ports
 - [ ] Filters by protocol/IP
 - [ ] Payload display
 - [ ] File logging

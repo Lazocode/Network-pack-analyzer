@@ -1,4 +1,4 @@
-from scapy.all import sniff, IP
+from scapy.all import sniff, IP, UDP, TCP, ICMP
 
 
 def packet_callback(packet):
@@ -7,16 +7,18 @@ def packet_callback(packet):
         ip_dest = packet[IP].dst
         
         if packet.haslayer("TCP"):
-            protocol = "TCP"        
+            origin_port = packet["TCP"].sport
+            dest_port = packet["TCP"].dport
+            print(f"[TCP] Origin: {ip_origin}:{origin_port} --> Destination: {ip_dest}:{dest_port}");       
         elif packet.haslayer("UDP"):
-            protocol = "UDP"
+            origin_port = packet["UDP"].sport
+            dest_port = packet["UDP"].dport
+            print(f"[UDP] Origin: {ip_origin}:{origin_port} --> Destination: {ip_dest}:{dest_port}");       
         elif packet.haslayer("ICMP"):
-            protocol = "ICMP"
+            print(f"[ICMP] Origin: {ip_origin} --> Destination: {ip_dest}");
         else:
             protocol = "Other"
-             
-        print(f"[{protocol}] Origin: {ip_origin} --> Destination: {ip_dest}");
-        print("Capturando pacotes... Pressione Ctrl+C para parar.")
-     
+            print(f"[{protocol}] Origin: {ip_origin} --> Destination: {ip_dest}");
+      
       
 sniff(prn=packet_callback, store=False, count=10)
