@@ -11,7 +11,7 @@ Developed for educational purposes in the context of blue team and cybersecurity
 - [x] Real-time packet capture
 - [x] Protocol identification (TCP, UDP, ICMP)
 - [x] Source and destination ports
-- [ ] Filters by protocol/IP
+- [x] Filters by protocol/IP
 - [ ] Payload display
 - [ ] File logging
 
