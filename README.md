@@ -12,7 +12,7 @@ Developed for educational purposes in the context of blue team and cybersecurity
 - [x] Protocol identification (TCP, UDP, ICMP)
 - [x] Source and destination ports
 - [x] Filters by protocol/IP
-- [ ] Payload display
+- [x] Payload display
 - [ ] File logging
 
 ## How to run

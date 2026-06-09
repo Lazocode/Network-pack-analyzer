@@ -1,7 +1,6 @@
-from scapy.all import sniff, IP, UDP, TCP, ICMP
-import sys
+from scapy.all import sniff, IP, UDP, TCP, ICMP, Raw, ifaces
 
-FILTER_PROTOCOL = TCP  # Set to "TCP", "UDP", "ICMP", or None for all protocols.
+FILTER_PROTOCOL = None  # Set to "TCP", "UDP", "ICMP", or None for all protocols.
 FILTER_IP = None  # Set to an IP address string to filter by source or destination IP, or None for all IPs.
 
 
@@ -33,6 +32,13 @@ def packet_callback(packet):
                 return
             
             print(info)
+
+            if packet.haslayer("Raw"):
+                payload = packet["Raw"].load
+                try:
+                    print(f"Payload: {payload.decode('utf-8', errors='ignore')[:100]}")
+                except UnicodeDecodeError:
+                    print(f"   Payload (hex): {payload.hex()[:100]}")
 
 
 sniff(prn=packet_callback, store=False, count=0)
