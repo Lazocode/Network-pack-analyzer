@@ -13,7 +13,7 @@ Developed for educational purposes in the context of blue team and cybersecurity
 - [x] Source and destination ports
 - [x] Filters by protocol/IP
 - [x] Payload display
-- [ ] File logging
+- [x] File logging
 
 ## How to run
 1. Install dependencies: `pip install scapy`
